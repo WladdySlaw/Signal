@@ -1,0 +1,379 @@
+@import "vars.sass"
+
+//************************ MIXINS **************************
+=placeholder
+	&::-webkit-input-placeholder
+		@content
+	&:-moz-placeholder
+		@content
+	&::-moz-placeholder
+		@content
+	&:-ms-input-placeholder
+		@content
+
+%clearfix
+	*zoom: 1
+	&:before, &:after
+		content: " "
+		display: table
+	&:after
+		clear: both
+
+@mixin bp-1450
+	@media (max-width: 1450px)
+		@content
+
+@mixin bp-1200
+	@media (max-width: 1200px)
+		@content
+
+@mixin bp-992
+	@media (max-width: 992px)
+		@content
+
+@mixin bp-768
+	@media (max-width: 767px)
+		@content
+
+@mixin bp-650
+	@media (max-width: 650px)
+		@content
+
+@mixin bp-480
+	@media (max-width: 480px)
+		@content
+
+@mixin bp-380
+	@media (max-width: 380px)
+		@content
+
+@mixin bp-330
+	@media (max-width: 330px)
+		@content
+
+//************************ STYLES *************************
+
+.c-input
+	width: 100%
+	height: 45px
+	background-color: #000
+	border: 0
+	margin-bottom: 10px
+	padding: 0 10px
+	font-family: $openSans
+	color: #fff
+	font-size: 15px
+	@include bp-768
+		background-color: #fff
+		color: #000
+	&:focus
+		outline: 0
+	+placeholder
+		color: $placeholder
+.double-inputs
+	float: left
+	width: 100%
+	.c-input
+		&:nth-child(odd)
+			width: 50px
+			margin-right: 5px
+			float: left
+			@include bp-768
+				width: calc(15% - 5px)
+		&:nth-child(even)
+			width: 225px
+			margin-left: 5px
+			float: left
+			@include bp-768
+				width: calc(85% - 5px)
+.c-submitBtn
+	padding: 10px
+	background: linear-gradient(to bottom, #52ba00, #266700)
+	border: 0
+	line-height: 0
+	text-align: center
+	overflow: hidden
+	transition: .2s
+	&.not-valid
+		background: $red
+	@include bp-768
+		width: 100%
+	&:focus
+		outline: 0
+	&:hover
+		box-shadow: 0 8px 8px 0 rgba(0,0,0,0.24), 0 0 8px 0 rgba(0,0,0,0.12)
+		.icon-whiteArrow
+			position: relative
+			left: 50px
+	.icon-whiteArrow
+		display: inline-block
+		transition: .2s
+		position: relative
+		left: 0
+	&__txt
+		display: inline-block
+		margin-right: 10px
+		margin-bottom: 0
+		font-family: $bigNoodleTitling
+		font-size: 40px
+		color: #fff
+		font-style: italic
+		letter-spacing: 1.5px
+		transition: .4s
+.submit-wrapper
+	position: relative
+	.icon-redArrow
+		position: absolute
+		left: -100px
+		top: -40px
+		@include bp-768
+		display: none
+.home
+	background: url(../img/content/hero-bg.jpg) #000 top center no-repeat
+	background-size: 100%
+	width: 100%
+	min-height: 100vh
+	@include bp-1200
+		background-size: 1200px
+	@include bp-650
+		background-size: 650px auto
+		background-position: 0 275px
+.logo
+	display: block
+	width: 100%
+	text-align: center
+	margin-top: 20px
+	&__img
+		width: 185px
+		height: auto
+.text-block
+	@include bp-650
+		margin-bottom: 270px
+	&__title
+		color: #fff
+		font-style: italic
+		font-family: $bigNoodleTitling
+		font-size: 85px
+		text-align: center
+		text-shadow: 0 0 30px #000
+		@include bp-650
+			font-size: 40px
+.motto
+	&__text
+		color: #fff
+		text-shadow: 0 0 30px #000
+		text-align: center
+		margin-bottom: 0
+		font-family: $cabinSemiBold
+		font-size: 42px
+		transition: .2s
+		@include bp-650
+			font-size: 25px
+		@include bp-380
+			font-size: 20px
+		&:nth-child(odd)
+			padding-right: 100px
+			@include bp-768
+				padding-right: 30px
+			@include bp-480
+				padding-right: 0
+		&:nth-child(even)
+			padding-left: 100px
+			@include bp-768
+				padding-left: 30px
+			@include bp-480
+				padding-left: 0
+
+.validation-message
+	font-family: $cabinSemiBold
+	font-size: 12px
+	color: $red
+	margin-top: 20px
+
+.account-form
+	width: 285px
+	float: right
+	margin-top: 25px
+	margin-right: 125px
+	@include bp-992
+		float: none
+		margin: 25px auto
+	@include bp-768
+		width: 100%
+	&__title
+		color: #fff
+		font-style: italic
+		font-family: $bigNoodleTitling
+		font-size: 26px
+		text-shadow: 1px 1px rgba(0,0,0, 0.2), 0 0 50px #000
+		text-align: center
+		line-height: 30px
+		span
+			color: $lightGreen
+			font-size: 33px
+	&__btn
+		width: 100%
+.info
+	width: 100%
+	display: flex
+	flex-wrap: wrap
+	flex-direction: row
+	justify-content: center
+	margin-top: 35px
+	margin-bottom: 55px
+.info-block
+	border: 5px solid $red
+	border-radius: 20px
+	overflow: hidden
+	margin: 20px
+	width: 225px
+	position: relative
+	z-index: 10
+	cursor: pointer
+	padding-bottom: 50px
+	background-color: #000
+	&:hover
+		.info-block__icon
+			display: block
+			background-size: cover
+			height: 50px
+			width: 60px
+			background: url(../img/icons/icons-info.png) no-repeat
+			&.education
+				background-position: -65px 0px
+			&.customer-service
+				width: 50px
+				background-position: -213px 0px
+			&.knowledgeable-mentors
+				background-position: -344px 0px
+			&.art-platform
+				background-position: -492px 0px
+		.info-block__overlay
+			border: 0 solid transparent
+			border-top: 0 solid rgba(255, 255, 255, .4)
+			border-left: 0 solid rgba(255, 255, 255, .4)
+	&__header
+		background-color: $yellow
+		height: 90px
+		width: 100%
+		box-shadow: inset 0px 0px 8px 3px rgba(0,0,0,0.95)
+		border-top-left-radius: 16px
+		border-top-right-radius: 16px
+		position: relative
+		padding-bottom: 5px
+		padding-left: 10px
+		padding-right: 10px
+	&__body
+		background-color: #000
+		position: relative
+		bottom: 5px
+	&__title
+		margin: 0
+		color: #000
+		text-align: center
+		position: relative
+		top: 50%
+		transform: translateY(-50%)
+		z-index: 3
+		line-height: 30px
+		font-family: $bigNoodleTitling
+		font-size: 32px
+	&__txt
+		color: #fff
+		letter-spacing: 1px
+		text-align: center
+		padding: 15px
+		margin: 0
+		position: relative
+		z-index: 3
+		font-family: $openSans
+		font-size: 15px
+	&__overlay
+		border: 80px solid transparent
+		border-top: 80px solid rgba(255, 255, 255, .4)
+		border-left: 80px solid rgba(255, 255, 255, .4)
+		position: absolute
+		top: 0
+		z-index: 2
+		opacity: .8
+		transition: .2s
+	&__icon
+		display: block
+		background-size: cover
+		height: 50px
+		width: 60px
+		background: url(../img/icons/icons-info.png) no-repeat
+		position: absolute
+		left: 50%
+		bottom: 20px
+		transform: translateX(-50%)
+		&.education
+			background-position: 0px 0px
+		&.customer-service
+			width: 50px
+			background-position: -166px 0px
+		&.knowledgeable-mentors
+			background-position: -292px 0px
+		&.art-platform
+			background-position: -425px 0px
+.payments
+	display: flex
+	flex-wrap: wrap
+	flex-direction: row
+	justify-content: center
+	margin-top: 55px
+	margin-bottom: 30px
+.payment
+	width: 50px
+	height: 30px
+	border: 1px solid $grey
+	margin: 0 5px
+	border-radius: 5px
+	cursor: pointer
+	transition: .3s
+	&:hover
+		border: 1px solid #fff
+	&__icon
+		display: block
+		background-size: cover
+		background: url(../img/icons/icon-pays.png) no-repeat center
+		width: 100%
+		height: 100%
+		&.visa
+			background-position: 3px 0
+		&.mastercard
+			background-position: -50px 0
+		&.american-express
+			background-position: -117px 0
+		&.world
+			background-position: -197px 0
+		&.discover
+			background-position: -265px 3px
+		&.jcb
+			background-position: -347px 0
+.footer
+	margin-bottom: 20px
+	&__txt
+		color: $darkGrey
+		font-family: $openSansLight
+		font-size: 11px
+
+
+//************************ ICONS *************************
+
+.icon-whiteArrow
+	display: block
+	background: url(../img/icons/icon-whiteArrow.png) no-repeat center
+	background-size: contain
+	width: 25px
+	height: 30px
+.icon-redArrow
+	display: block
+	background: url(../img/icons/icon-redArrow.png) no-repeat center
+	background-size: contain
+	width: 100px
+	height: 100px
+
+
+
+
